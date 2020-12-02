@@ -1,0 +1,11 @@
+.header{
+    position: relative;
+}
+.headerLogo{
+    position: absolute;
+    top:13px;
+    width: 24px;
+    height: 24px;
+    background-color: #C4C4C4;
+    border-radius: 50%;
+}
