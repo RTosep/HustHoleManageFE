@@ -12,13 +12,16 @@ import useStyles from './navStyles';
 import theme from './navTheme';
 import NavItem from './NavItem';
 import '../css/navListIcon.css';
-
-export default function PermanentDrawerLeft() {
+// 导航栏
+export default function NavBar() {
   const classes = useStyles();
   return (
+    // 引入主题
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
+        {/* 样式基线 */}
         <CssBaseline />
+        {/* 导航栏组件 */}
         <Drawer
           className={classes.drawer}
           variant="permanent"
@@ -32,6 +35,7 @@ export default function PermanentDrawerLeft() {
             display="flex"
             flexDirection="column"
           >
+            {/* 管理员模块 */}
             <Box
                 display="flex"
                 flexDirection="column"
@@ -56,6 +60,7 @@ export default function PermanentDrawerLeft() {
                   </Typography>
                 </Button>
             </Box>
+            {/* 各功能模块 */}
             <NavItem text="管理" list={manageList} />
             <NavItem text="功能" list={functionList} />
             <NavItem text="系统" list={systemList} />

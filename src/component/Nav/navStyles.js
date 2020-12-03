@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '0.25px',
     margin: '12px 0 0 16px',
   },
+  // 导航栏的文字样式设置
   listText: {
     position: 'absolute',
     height: 18,
@@ -92,12 +93,14 @@ const useStyles = makeStyles((theme) => ({
     top: 11,
     left: 64,
   },
+  // 导航栏的图表样式设置
   listIcon: {
     position: 'absolute',
     left: 11,
     top: 9,
     color: '#7e7e7e',
   },
+  // 导航栏的按钮样式设置
   listButton: {
     position: 'relative',
     margin: '5px 9px 5px 8px',

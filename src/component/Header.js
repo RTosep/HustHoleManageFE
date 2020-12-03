@@ -7,14 +7,16 @@ import {
 } from '@material-ui/core';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import './css/Header.css';
-
+// 头部栏的样式设置
 const useStyles = makeStyles(() => ({
+  //主体样式
   root: {
     backgroundColor: '#4B9F79',
     height: '50px',
     borderBottom: '1px solid #808080',
     boxShadow: 'none',
   },
+  // 文字样式
   typographyText: {
     fontSize: '14px',
     marginLeft: '39px',
@@ -23,13 +25,14 @@ const useStyles = makeStyles(() => ({
     fontWeight: '500',
     fontStyle: 'normal',
   },
+  // 图标样式
   notification: {
     position: 'absolute',
     right: '36px',
     bottom: '13px',
   },
 }));
-
+// 头部栏
 const TopBar = () => {
   const classes = useStyles();
 

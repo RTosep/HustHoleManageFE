@@ -8,7 +8,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import SettingsIcon from '@material-ui/icons/Settings';
 import listLogo from '../img/list';
 import forestLogo from '../img/people';
-
+// 导航栏各模块名称以及图标
 export const manageList = [
   ['用户管理', <PeopleAltIcon />],
   ['内容管理', listLogo],
