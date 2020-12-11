@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -19,14 +20,21 @@ const NavItem = (props) => {
       </Box>
       <List>
         {props.list.map((text, index) => (
-          <Button className={classes.listButton} key={index}>
-            <Box className={classes.listIcon}>
-              {text[1]}
-            </Box>
-            <Typography className={classes.listText} align='left'>
-              {text[0]}
-            </Typography>
-          </Button>
+          <Link
+          to={`${text[2]}`}
+          key={index + text}
+          >
+            <Button
+            className={classes.listButton}
+            >
+              <Box className={classes.listIcon}>
+                {text[1]}
+              </Box>
+              <Typography className={classes.listText} align='left'>
+                {text[0]}
+              </Typography>
+            </Button>
+            </Link>
         ))}
       </List>
     </>

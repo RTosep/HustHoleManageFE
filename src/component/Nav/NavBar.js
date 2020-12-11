@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,7 +12,18 @@ import { manageList, functionList, systemList } from './navListNname';
 import useStyles from './navStyles';
 import theme from './navTheme';
 import NavItem from './NavItem';
+import ContentPage from '../views/Content/Content';
+import FeedBackPage from '../views/FeedBacks/FeedBacks';
+import ForestPage from '../views/Forest/Forest';
+import HeatedHolePage from '../views/HeatedHole/HeatedHole';
+import NotificationPage from '../views/Notification/Notification';
+import PromotionPage from '../views/Promotion/Promotion';
+import RecordPage from '../views/Records/Records';
+import SettingPage from '../views/Setting/Setting';
+import UpdatelogPage from '../views/Updatelogs/Updatelogs';
+import UserPage from '../views/User/User';
 import '../css/navListIcon.css';
+
 // 导航栏
 export default function NavBar() {
   const classes = useStyles();
@@ -64,6 +76,18 @@ export default function NavBar() {
             <NavItem text="管理" list={manageList} />
             <NavItem text="功能" list={functionList} />
             <NavItem text="系统" list={systemList} />
+            <Switch>
+              <Route path='/app/user' component={UserPage} />
+              <Route path='/app/content' component={ContentPage} />
+              <Route path='/app/notification' component={NotificationPage} />
+              <Route path='/app/forest' component={ForestPage} />
+              <Route path='/app/heatedhole' component={HeatedHolePage} />
+              <Route path='/app/promotion' component={PromotionPage} />
+              <Route path='/app/feedback' component={FeedBackPage} />
+              <Route path='/app/updatedlog' component={UpdatelogPage} />
+              <Route path='/app/record' component={RecordPage} />
+              <Route path='/app/setting' component={SettingPage} />
+            </Switch>
           </Box>
         </Drawer>
         <main className={classes.content}>

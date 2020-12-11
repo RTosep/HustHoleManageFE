@@ -5,11 +5,12 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import './css/Header.css';
 // 头部栏的样式设置
 const useStyles = makeStyles(() => ({
-  //主体样式
+  // 主体样式
   root: {
     backgroundColor: '#4B9F79',
     height: '50px',
@@ -42,7 +43,10 @@ const TopBar = () => {
           className={classes.root}
         >
         <Toolbar>
-            <div className="headerLogo"></div>
+            <Link to="/">
+              <div className="headerLogo">
+              </div>
+            </Link>
             <Typography className={classes.typographyText}>1037树洞</Typography>
         </Toolbar>
         <NotificationsNoneIcon className={classes.notification}/>
