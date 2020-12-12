@@ -26,6 +26,7 @@ const NavItem = (props) => {
           >
             <Button
             className={classes.listButton}
+            disableRipple
             >
               <Box className={classes.listIcon}>
                 {text[1]}

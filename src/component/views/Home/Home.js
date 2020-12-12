@@ -3,9 +3,9 @@ import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 import Page from '../../Page';
 
-const ContentPage = () => (
+const HomePage = () => (
     <Page
-      title="Content"
+      title="Home"
     >
       <main>
         <div/>
@@ -13,7 +13,7 @@ const ContentPage = () => (
           hahah
         </Button>
         <Typography paragraph>
-            Content
+            Home
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua.
@@ -46,4 +46,4 @@ const ContentPage = () => (
       </main>
     </Page>
 );
-export default ContentPage;
+export default HomePage;

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +17,7 @@ import { manageList, functionList, systemList } from './navListNname';
 import useStyles from './navStyles';
 import theme from './navTheme';
 import NavItem from './NavItem';
+import HomePage from '../views/Home/Home';
 import ContentPage from '../views/Content/Content';
 import FeedBackPage from '../views/FeedBacks/FeedBacks';
 import ForestPage from '../views/Forest/Forest';
@@ -65,70 +71,35 @@ export default function NavBar() {
               <Divider style={{ marginLeft: '-16px', color: '#E5E5E5' }}/>
             </Box>
             <Box>
+              <Link to='/home'>
                 <Button className={classes.firstPageButton} disableRipple>
                   <DashboardIcon className={classes.dashBoardIcon}/>
                   <Typography className={classes.firstPageTypeText}>
                     首页
                   </Typography>
                 </Button>
+              </Link>
             </Box>
             {/* 各功能模块 */}
             <NavItem text="管理" list={manageList} />
             <NavItem text="功能" list={functionList} />
             <NavItem text="系统" list={systemList} />
-            <Switch>
-              <Route path='/app/user' component={UserPage} />
-              <Route path='/app/content' component={ContentPage} />
-              <Route path='/app/notification' component={NotificationPage} />
-              <Route path='/app/forest' component={ForestPage} />
-              <Route path='/app/heatedhole' component={HeatedHolePage} />
-              <Route path='/app/promotion' component={PromotionPage} />
-              <Route path='/app/feedback' component={FeedBackPage} />
-              <Route path='/app/updatedlog' component={UpdatelogPage} />
-              <Route path='/app/record' component={RecordPage} />
-              <Route path='/app/setting' component={SettingPage} />
-            </Switch>
           </Box>
         </Drawer>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua.
-            Rhoncus dolor purus non enim praesent elementum
-            facilisis leo vel.
-             Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-            gravida rutrum quisque non tellus.
-            Convallis convallis tellus id interdum velit laoreet id
-            donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing.
-            Amet nisl suscipit
-            adipiscing bibendum est ultricies integer quis.
-             Cursus euismod quis viverra nibh cras.
-            Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
-             Mauris commodo quis
-            imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-            At augue eget
-            arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-             Lorem
-            donec massa sapien faucibus et molestie ac.
-          </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-            tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-            consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus
-             sed
-            vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-            hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-             et
-            tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique
-             sollicitudin
-            nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis
-             orci a.
-          </Typography>
-        </main>
+        <Switch>
+          <Route path='/home' component={HomePage} />
+          <Route path='/user' component={UserPage} />
+          <Route path='/content' component={ContentPage} />
+          <Route path='/notification' component={NotificationPage} />
+          <Route path='/forest' component={ForestPage} />
+          <Route path='/heatedhole' component={HeatedHolePage} />
+          <Route path='/promotion' component={PromotionPage} />
+          <Route path='/feedback' component={FeedBackPage} />
+          <Route path='/updatedlog' component={UpdatelogPage} />
+          <Route path='/record' component={RecordPage} />
+          <Route path='/setting' component={SettingPage} />
+          <Redirect to='/home' />
+        </Switch>
       </div>
     </ThemeProvider>
   );
