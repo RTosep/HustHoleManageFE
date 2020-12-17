@@ -19,20 +19,20 @@ const NavItem = (props) => {
         </Typography>
       </Box>
       <List>
-        {props.list.map((text, index) => (
+        {props.list.map((item, index) => (
           <Link
-          to={`${text[2]}`}
-          key={index + text}
+          to={item.path}
+          key={index + item}
           >
             <Button
             className={classes.listButton}
             disableRipple
             >
               <Box className={classes.listIcon}>
-                {text[1]}
+                {item.icon}
               </Box>
               <Typography className={classes.listText} align='left'>
-                {text[0]}
+                {item.name}
               </Typography>
             </Button>
             </Link>

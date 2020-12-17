@@ -11,18 +11,58 @@ import forestLogo from '../img/people';
 
 // 导航栏各模块名称以及图标
 export const manageList = [
-  ['用户管理', <PeopleAltIcon />, '/user'],
-  ['内容管理', listLogo, '/content'],
-  ['通知管理', <NotificationsIcon />, '/notification'],
+  {
+    name: '用户管理',
+    icon: <PeopleAltIcon />,
+    path: '/user',
+  },
+  {
+    name: '内容管理',
+    icon: listLogo,
+    path: '/content',
+  },
+  {
+    name: '通知管理',
+    icon: <NotificationsIcon />,
+    path: '/notification',
+  },
 ];
 export const functionList = [
-  ['小树林', forestLogo, '/forest'],
-  ['热门树洞', <WhatshotIcon />, '/heatedhole'],
-  ['推广', <ContactlessIcon />, '/promotion'],
-  ['用户反馈', <SmsFailedIcon />, '/feedback'],
-  ['更新日志', <LibraryBooksIcon />, '/updatedlog'],
+  {
+    name: '小树林',
+    icon: forestLogo,
+    path: '/forest',
+  },
+  {
+    name: '热门树洞',
+    icon: <WhatshotIcon />,
+    path: '/heatedhole',
+  },
+  {
+    name: '推广',
+    icon: <ContactlessIcon />,
+    path: '/promotion',
+  },
+  {
+    name: '用户反馈',
+    icon: <SmsFailedIcon />,
+    path: '/feedback',
+  },
+  {
+    name: '更新日志',
+    icon: <LibraryBooksIcon />,
+    path: '/updatedlog',
+  },
 ];
 export const systemList = [
-  ['操作记录', <AssignmentIcon />, '/record'],
-  ['系统设置', <SettingsIcon />, '/setting'],
+  {
+    name: '操作记录',
+    icon: <AssignmentIcon />,
+    path: '/record',
+  },
+  {
+    name: '系统设置',
+    icon: <SettingsIcon />,
+    path: '/setting',
+  },
 ];

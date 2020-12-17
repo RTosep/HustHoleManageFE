@@ -10,6 +10,9 @@ const theme = createMuiTheme({
         fontSize: '15px',
         borderRadius: '4px',
         color: 'rgba(0, 0, 0, 0.87)',
+        '&:active': {
+          backgroundColor: 'rgba(75,159,121,0.12)',
+        },
         '&:focus': {
           backgroundColor: 'rgba(75,159,121,0.12)',
         },
