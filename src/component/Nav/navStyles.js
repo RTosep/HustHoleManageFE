@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
   // 头部横栏样式设置
   root: {
     display: 'flex',
-    fontFamily: 'Source Han Sans',
+    fontFamily: 'Source Han Sans !important',
   },
   drawer: {
     width: drawerWidth,

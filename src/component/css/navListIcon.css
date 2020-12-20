@@ -1,4 +1,6 @@
-Button{
-    color: red;
-    background-color: yellow;
+.activeShow{
+    background-color: rgba(75,159,121,0.12) !important;
+}
+.show{
+    background-color:'';
 }

@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import useStyles from './navStyles';
+import '../css/navListIcon.css';
 // 导航栏个模块的列表项
 const NavItem = (props) => {
   const classes = useStyles();
@@ -19,13 +20,14 @@ const NavItem = (props) => {
         </Typography>
       </Box>
       <List>
-        {props.list.map((item, index) => (
+        {props.list.map((item) => (
           <Link
           to={item.path}
-          key={index + item}
+          key={item.state}
           >
             <Button
-            className={classes.listButton}
+            className={`classes.listButton ${props.isShow === item.state ? 'activeShow' : 'show'}`}
+            onClick={() => props.changeIsShow(item.state)}
             disableRipple
             >
               <Box className={classes.listIcon}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Switch,
   Route,
@@ -29,9 +29,25 @@ import SettingPage from '../views/Setting/Setting';
 import UpdatelogPage from '../views/Updatelogs/Updatelogs';
 import UserPage from '../views/User/User';
 import '../css/navListIcon.css';
-
 // 导航栏
 export default function NavBar() {
+  // 设置首页的状态标志
+  const homeState = 0;
+  // 使用useState方法通过改变isShow的状态改变按钮背景颜色
+  let [isShow, setIsShow] = useState(0);
+  // 将当前状态保存在本地浏览器中
+  isShow = JSON.parse(localStorage.getItem('isShow'))
+    ? JSON.parse(localStorage.getItem('isShow'))
+    : homeState;
+  // 初始化本地状态记录
+  const mylocalStorage = window.localStorage;
+  mylocalStorage.setItem('isShow', isShow);
+  // 点击按钮时改变标记状态，同时重新写入本地记录
+  const changeIsShow = (state) => {
+    setIsShow(state);
+    mylocalStorage.setItem('isShow', state);
+  };
+  // 使用样式
   const classes = useStyles();
   return (
     // 引入主题
@@ -72,7 +88,11 @@ export default function NavBar() {
             </Box>
             <Box>
               <Link to='/home'>
-                <Button className={classes.firstPageButton} disableRipple>
+                <Button
+                className={`classes.firstPageButton ${isShow === homeState ? 'activeShow' : 'show'}`}
+                onClick={() => changeIsShow(homeState)}
+                disableRipple
+                >
                   <DashboardIcon className={classes.dashBoardIcon}/>
                   <Typography className={classes.firstPageTypeText}>
                     首页
@@ -81,9 +101,9 @@ export default function NavBar() {
               </Link>
             </Box>
             {/* 各功能模块 */}
-            <NavItem text="管理" list={manageList} />
-            <NavItem text="功能" list={functionList} />
-            <NavItem text="系统" list={systemList} />
+            <NavItem text="管理" list={manageList} isShow={isShow} changeIsShow={changeIsShow} />
+            <NavItem text="功能" list={functionList} isShow={isShow} changeIsShow={changeIsShow} />
+            <NavItem text="系统" list={systemList} isShow={isShow} changeIsShow={changeIsShow} />
           </Box>
         </Drawer>
         <Switch>
