@@ -44,7 +44,8 @@ const NavItem = (props) => {
   );
 };
 NavItem.propTypes = {
-  text: PropTypes.string,
+  isShow: PropTypes.number,
+  changeIsShow: PropTypes.func,
   list: PropTypes.array,
 };
 
