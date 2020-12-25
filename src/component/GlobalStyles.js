@@ -6,7 +6,8 @@ const useStyles = makeStyles(() => createStyles({
       boxSizing: 'border-box',
       margin: 0,
       padding: 0,
-      fontFamily: 'Source Han Sans !important',
+      fontFamily: '"Noto Sans SC" !important',
+      fontWeight: '500 !important',
     },
     html: {
       '-webkit-font-smoothing': 'antialiased',
