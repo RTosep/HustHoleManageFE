@@ -1,0 +1,96 @@
+.loginPage{
+    position: relative;
+    background-image: url('../../img/loginBackground.png');
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.loginPage .pivotLogo{
+    width: 208px;
+    height: 67px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+.loginBox{
+    width: 425px;
+    height: 368px;
+    background-color: white;
+    border-radius: 4px;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.loginText{
+    font-size: 24px !important;
+    line-height: 32px !important;
+    font-weight: 700 !important;
+    color: #333333;
+    margin-left: 32px !important;
+    margin-top: 32px !important;
+}
+.loginUserName{
+    width: 361px;
+    height: 64px;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 32px;
+    margin-top: 32px;
+    position: relative;
+}
+.loginPassword{
+    width: 361px;
+    height: 64px;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 32px;
+    margin-top: 32px;
+    position: relative;
+}
+.loginButton{
+    width: 361px;
+    height: 64px;
+    margin-left: 32px !important;
+    margin-top: 32px !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px !important;
+}
+.userLogo{
+    left: 16px;
+    top: 20px;
+    position: absolute;
+}
+.pwdLogo{
+    left: 16px;
+    top: 20px;
+    position: absolute;
+}
+.loginUserInput{
+    position: absolute;
+    left: 56px;
+}
+.loginUserInput ::after{
+    border-bottom: none !important;
+}
+.loginUserInput ::before{
+    border-bottom: none !important;
+}
+.loginPwdInput{
+    position: absolute;
+    left: 56px;
+}
+.loginPwdInput ::after{
+    border-bottom: none !important;
+}
+.loginPwdInput ::before{
+    border-bottom: none !important;
+}
