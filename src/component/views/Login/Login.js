@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
-// import * as Yup from 'yup';
+import axios from 'axios';
+import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography, TextField } from '@material-ui/core';
+import Header from '../../Header';
 import './Login.css';
+import FooterBar from '../../Footer';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const hello = 'hello';
+  const [state, setState] = useState(0);
+  const urlLogin = 'http://hustholetest.pivotstudio.cn/managerapi/auth/login';
   return (
     <div className='loginPage'>
+      <Header />
       <img className='pivotLogo' src='PivotStudioLogo.png'/>
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={() => {
-          navigate('/home', { replace: true });
-          alert(hello);
+        onSubmit={(values) => {
+          axios.post(urlLogin, qs.stringify({
+            email: values.email,
+            password: values.password,
+          }, { withCredentials: true })).then(
+            (response) => {
+              localStorage.setItem('token', response.data.token);
+              navigate('/app/home', { replace: true });
+            },
+          ).catch(
+            (error) => setState(1),
+          );
         }}
       >
         {({
@@ -65,10 +79,22 @@ const LoginPage = () => {
             >
               登录
             </Button>
+            <div className={ state === 1 ? 'loginError' : 'loginNone'}>
+              <Typography className='loginFailedText'>
+                登陆失败
+              </Typography>
+              <Typography className='loginRetryText'>
+                账号或密码错误，请重试。
+              </Typography>
+              <button type='button' className='sureText' onClick={ () => setState(0) }>
+                确认
+              </button>
+            </div>
           </div>
         </form>
         )}
        </Formik>
+       <FooterBar />
     </div>
   );
 };

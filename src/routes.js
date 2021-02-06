@@ -1,40 +1,43 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import DashboardLayout from 'src/layouts/DashboardLayout';
-import MainLayout from 'src/layouts/MainLayout';
-import AccountView from 'src/views/account/AccountView';
-import CustomerListView from 'src/views/customer/CustomerListView';
-import DashboardView from 'src/views/reports/DashboardView';
-import LoginView from 'src/views/auth/LoginView';
-import NotFoundView from 'src/views/errors/NotFoundView';
-import ProductListView from 'src/views/product/ProductListView';
-import RegisterView from 'src/views/auth/RegisterView';
-import SettingsView from 'src/views/settings/SettingsView';
+import ContentPage from './component/views/Content/Content';
+import FeedBackPage from './component/views/FeedBacks/FeedBacks';
+import ForestPage from './component/views/Forest/Forest';
+import HeatedHolePage from './component/views/HeatedHole/HeatedHole';
+import HomePage from './component/views/Home/Home';
+import LoginPage from './component/views/Login/Login';
+import NotificationPage from './component/views/Notification/Notification';
+import PromotionPage from './component/views/Promotion/Promotion';
+import SettingPage from './component/views/Setting/Setting';
+import UpdatelogPage from './component/views/Updatelogs/Updatelogs';
+import UserPage from './component/views/User/User';
+import RecordPage from './component/views/Records/Records';
+import DashboardLayout from './component/Nav/index';
 
 const routes = [
   {
     path: 'app',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: <AccountView /> },
-      { path: 'customers', element: <CustomerListView /> },
-      { path: 'dashboard', element: <DashboardView /> },
-      { path: 'products', element: <ProductListView /> },
-      { path: 'settings', element: <SettingsView /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
+      { path: 'home', element: <HomePage /> },
+      { path: 'user', element: <UserPage /> },
+      { path: 'content', element: <ContentPage /> },
+      { path: 'notification', element: <NotificationPage /> },
+      { path: 'forest', element: <ForestPage /> },
+      { path: 'heatedhole', element: <HeatedHolePage /> },
+      { path: 'promotion', element: <PromotionPage /> },
+      { path: 'feedback', element: <FeedBackPage /> },
+      { path: 'updatedlog', element: <UpdatelogPage /> },
+      { path: 'record', element: <RecordPage /> },
+      { path: 'setting', element: <SettingPage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: '/', element: <Navigate to="/app/home" /> },
+    ],
   },
   {
     path: '/',
-    element: <MainLayout />,
-    children: [
-      { path: 'login', element: <LoginView /> },
-      { path: 'register', element: <RegisterView /> },
-      { path: '404', element: <NotFoundView /> },
-      { path: '/', element: <Navigate to="/app/dashboard" /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
-  }
+    element: <LoginPage />,
+  },
 ];
 
 export default routes;

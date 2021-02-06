@@ -14,19 +14,19 @@ export const manageList = [
   {
     name: '用户管理',
     icon: <PeopleAltIcon />,
-    path: '/user',
+    path: '/app/user',
     state: 1,
   },
   {
     name: '内容管理',
     icon: listLogo,
-    path: '/content',
+    path: '/app/content',
     state: 2,
   },
   {
     name: '通知管理',
     icon: <NotificationsIcon />,
-    path: '/notification',
+    path: '/app/notification',
     state: 3,
   },
 ];
@@ -34,31 +34,31 @@ export const functionList = [
   {
     name: '小树林',
     icon: forestLogo,
-    path: '/forest',
+    path: '/app/forest',
     state: 4,
   },
   {
     name: '热门树洞',
     icon: <WhatshotIcon />,
-    path: '/heatedhole',
+    path: '/app/heatedhole',
     state: 5,
   },
   {
     name: '推广',
     icon: <ContactlessIcon />,
-    path: '/promotion',
+    path: '/app/promotion',
     state: 6,
   },
   {
     name: '用户反馈',
     icon: <SmsFailedIcon />,
-    path: '/feedback',
+    path: '/app/feedback',
     state: 7,
   },
   {
     name: '更新日志',
     icon: <LibraryBooksIcon />,
-    path: '/updatedlog',
+    path: '/app/updatedlog',
     state: 8,
   },
 ];
@@ -66,13 +66,13 @@ export const systemList = [
   {
     name: '操作记录',
     icon: <AssignmentIcon />,
-    path: '/record',
+    path: '/app/record',
     state: 9,
   },
   {
     name: '系统设置',
     icon: <SettingsIcon />,
-    path: '/setting',
+    path: '/app/setting',
     state: 10,
   },
 ];

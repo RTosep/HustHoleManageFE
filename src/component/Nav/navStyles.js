@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 255;
+const drawerWidth = 269;
 const useStyles = makeStyles((theme) => ({
   // 头部横栏样式设置
   root: {
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   // “管理员”区域位置以及高度设置
   drawerPaper: {
     width: drawerWidth,
-    top: 52,
-    height: 'calc(100% - 64px)',
+    top: 50,
+    height: 'calc(100% - 51px)',
   },
   // “管理员”图标样式设置
   managerIcon: {

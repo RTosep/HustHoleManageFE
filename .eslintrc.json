@@ -12,6 +12,7 @@
     },
     "rules": {
         "class-methods-use-this": "off",
-        "prefer-const": "off"
+        "prefer-const": "off",
+        "no-unused-vars": "off"
     }
 }

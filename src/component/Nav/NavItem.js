@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink as RouterLink } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -21,13 +21,13 @@ const NavItem = (props) => {
       </Box>
       <List>
         {props.list.map((item) => (
-          <Link
-          to={item.path}
-          key={item.state}
-          >
             <Button
-            className={`classes.listButton ${props.isShow === item.state ? 'activeShow' : 'show'}`}
-            onClick={() => props.changeIsShow(item.state)}
+            key={item.name}
+            activeClassName='activeShow'
+            component={RouterLink}
+            to={item.path}
+            className={classes.listButton}
+            // onClick={() => props.changeIsShow(item.state)}
             disableRipple
             >
               <Box className={classes.listIcon}>
@@ -37,7 +37,6 @@ const NavItem = (props) => {
                 {item.name}
               </Typography>
             </Button>
-            </Link>
         ))}
       </List>
     </>

@@ -1,21 +1,20 @@
+import React from 'react';
+import { useRoutes } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import GlobalStyles from './component/GlobalStyles';
-import TopBar from './component/Header';
-import LoginPage from './component/views/Login/Login';
+import routes from './routes';
 import theme from './component/views/Login/LoginTheme';
-import NavBar from './component/Nav/NavBar';
 
-function App() {
+const App = () => {
+  const routing = useRoutes(routes);
   return (
     <>
-      <GlobalStyles />
-      <TopBar />
       <MuiThemeProvider theme={theme}>
-        <LoginPage />
+      <GlobalStyles />
+        {routing}
       </MuiThemeProvider>
-      <NavBar />
     </>
   );
-}
+};
 
 export default App;
