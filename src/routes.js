@@ -9,7 +9,7 @@ import LoginPage from './component/views/Login/Login';
 import NotificationPage from './component/views/Notification/Notification';
 import PromotionPage from './component/views/Promotion/Promotion';
 import SettingPage from './component/views/Setting/Setting';
-import UpdatelogPage from './component/views/Updatelogs/Updatelogs';
+import ManagerPage from './component/views/Manager/ManagerPage';
 import UserPage from './component/views/User/User';
 import RecordPage from './component/views/Records/Records';
 import DashboardLayout from './component/Nav/index';
@@ -27,7 +27,7 @@ const routes = [
       { path: 'heatedhole', element: <HeatedHolePage /> },
       { path: 'promotion', element: <PromotionPage /> },
       { path: 'feedback', element: <FeedBackPage /> },
-      { path: 'updatedlog', element: <UpdatelogPage /> },
+      { path: 'manager', element: <ManagerPage /> },
       { path: 'record', element: <RecordPage /> },
       { path: 'setting', element: <SettingPage /> },
       { path: 'login', element: <LoginPage /> },

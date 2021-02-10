@@ -1,0 +1,200 @@
+.suggestion{
+    width: 1118px;
+    position: absolute;
+    left: 288px;
+    top: 326px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.suggestText{
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 20px !important;
+    line-height: 30px;
+    letter-spacing: 0.15px;
+}
+.userEvaluation{
+    width: 1120px;
+    height: 194px;
+    position: absolute;
+    left: 288px;
+    top: 100px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.userEvaText{
+    position: absolute;
+    height: 30px;
+    font-size: 20px !important;
+    line-height: 30px;
+    top: 24px;
+    left: 24px;
+}
+.percentText{
+    position: absolute;
+    height: 12px;
+    left: 621px;
+    top: 48px;
+    font-size: 12px !important;
+    line-height: 100%;
+    color: #7E7E7E;
+}
+.line div{
+    background-color: #EBEFF2;
+}
+.rowLine div{
+    width: 1118px;
+    height: 1px;
+    position: absolute;
+}
+.rowLine1{
+    top: 92px;
+}
+.rowLine2{
+    top: 143px;
+}
+.columLine div{
+    width: 1px;
+    height: 100px;
+    position: absolute;
+    top: 93px;
+}
+.line1{
+    left: 216px;
+}
+.line2{
+    left: 306px;
+}
+.line3{
+    left: 396px;
+}
+.line4{
+    left: 486px;
+}
+.line5{
+    top: 93px;
+    left: 576px;
+}
+.line6{
+    left: 666px;
+}
+.line7{
+    left: 756px;
+}
+.line8{
+    left: 846px;
+}
+.line9{
+    left: 936px;
+}
+.line10{
+    left: 1026px;
+}
+.scoreText{
+    font-weight: bold;
+    font-size: 13px !important;
+    line-height: 19px;
+    height: 19px;
+    letter-spacing: 0.01em !important;
+    color: #707683;
+    position: absolute;
+    top: 109px;
+    left: 95px;
+}
+.numberText{
+    font-weight: bold;
+    font-size: 13px !important;
+    line-height: 19px;
+    height: 19px;
+    letter-spacing: 0.01em !important;
+    color: #707683;
+    position: absolute;
+    top: 158px;
+    left: 95px;
+}
+.scoreText div{
+    font-weight: bold;
+    font-size: 13px !important;
+    line-height: 19px;
+    letter-spacing: 0.01em !important;
+    position: absolute;
+}
+.seriousScoreText{
+    color: #FF6767;
+}
+.seriousScoreText1{
+    left: 162px;
+}
+.seriousScoreText2{
+    left: 252px;
+}
+.seriousScoreText3{
+    left: 342px;
+}
+.seriousScoreText4{
+    left: 432px;
+}
+.seriousScoreText5{
+    left: 522px;
+}
+.seriousScoreText6{
+    left: 612px;
+}
+.oralScoreText{
+    color: #FFC632;
+}
+.oralScoreText1{
+    left: 702px;
+}
+.oralScoreText2{
+    left: 792px;
+}
+.exeScoreText{
+    color: #4B9F79;
+}
+.exeScoreText1{
+    left: 882px;
+}
+.exeScoreText2{
+    left: 972px;
+}
+.accountText{
+    font-weight: bold !important;
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000;
+    opacity: 0.5;
+    position: absolute;
+    left: 65px;
+    top: 76px;
+}
+.suggestCntText{
+    font-weight: bold !important;
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000;
+    opacity: 0.5;
+    position: absolute;
+    left: 345px;
+    top: 76px;
+}
+.suggestStaText{
+    font-weight: bold !important;
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #000000;
+    opacity: 0.5;
+    position: absolute;
+    right: 68px;
+    top: 76px;
+}

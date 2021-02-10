@@ -15,64 +15,54 @@ export const manageList = [
     name: '用户管理',
     icon: <PeopleAltIcon />,
     path: '/app/user',
-    state: 1,
   },
   {
     name: '内容管理',
     icon: listLogo,
     path: '/app/content',
-    state: 2,
   },
   {
     name: '通知管理',
     icon: <NotificationsIcon />,
     path: '/app/notification',
-    state: 3,
-  },
-];
-export const functionList = [
-  {
-    name: '小树林',
-    icon: forestLogo,
-    path: '/app/forest',
-    state: 4,
-  },
-  {
-    name: '热门树洞',
-    icon: <WhatshotIcon />,
-    path: '/app/heatedhole',
-    state: 5,
-  },
-  {
-    name: '推广',
-    icon: <ContactlessIcon />,
-    path: '/app/promotion',
-    state: 6,
   },
   {
     name: '用户反馈',
     icon: <SmsFailedIcon />,
     path: '/app/feedback',
-    state: 7,
+  },
+];
+export const functionList = [
+  {
+    name: '热门推荐',
+    icon: <WhatshotIcon />,
+    path: '/app/heatedhole',
   },
   {
-    name: '更新日志',
-    icon: <LibraryBooksIcon />,
-    path: '/app/updatedlog',
-    state: 8,
+    name: '小树林',
+    icon: forestLogo,
+    path: '/app/forest',
+  },
+  {
+    name: '广告',
+    icon: <ContactlessIcon />,
+    path: '/app/promotion',
   },
 ];
 export const systemList = [
   {
-    name: '操作记录',
+    name: '操作日志',
     icon: <AssignmentIcon />,
     path: '/app/record',
-    state: 9,
+  },
+  {
+    name: '管理人员',
+    icon: <LibraryBooksIcon />,
+    path: '/app/manager',
   },
   {
     name: '系统设置',
     icon: <SettingsIcon />,
     path: '/app/setting',
-    state: 10,
   },
 ];

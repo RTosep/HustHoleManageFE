@@ -11,11 +11,17 @@ import CustomPaginationActionsTable from './CommentTable';
 
 const Comment = () => {
   const classes = contentStyles();
+  const MaxSize = 10000;
+
   return (
     <div className='comment'>
         <Formik
             initialValues={{ hole_id: '' }}
             onSubmit={ (values) => {
+              axios({
+                method: 'GET',
+                url: `http://hustholetest.pivotstudio.cn/managerapi/replies/?hole_id=${values.hole_id}&start_id=0&list_size=${MaxSize}`,
+              });
             }}
         >
         {({
@@ -52,6 +58,7 @@ const Comment = () => {
           <Button
           className={classes.searchCmBtn}
           disableRipple
+          onClick={handleSubmit}
           >
           搜索
           </Button>

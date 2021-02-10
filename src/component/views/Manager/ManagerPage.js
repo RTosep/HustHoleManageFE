@@ -2,9 +2,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Page from '../../Page';
 
-const UpdatelogPage = () => (
+const ManagerPage = () => (
     <Page
-      title="Updatelog"
+      title="Manager"
     >
       <main>
         <div/>
@@ -40,4 +40,4 @@ const UpdatelogPage = () => (
       </main>
     </Page>
 );
-export default UpdatelogPage;
+export default ManagerPage;
