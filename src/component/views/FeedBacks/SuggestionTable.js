@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  makeStyles,
+  ThemeProvider,
+  useTheme,
+} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -65,24 +70,38 @@ function createData(name, calories, fat) {
 }
 
 const rows = [
-  // createData('Cupcake', 305, 3.7),
-  // createData('Donut', 452, 25.0),
-  // createData('Eclair', 262, 16.0),
-  // createData('Frozen yoghurt', 159, 6.0),
-  // createData('Gingerbread', 356, 16.0),
-  // createData('Honeycomb', 408, 3.2),
-  // createData('Ice cream sandwich', 237, 9.0),
-  // createData('Jelly Bean', 375, 0.0),
-  // createData('KitKat', 518, 26.0),
-  // createData('Lollipop', 392, 0.2),
-  // createData('Marshmallow', 318, 0),
-  // createData('Nougat', 360, 19.0),
-  // createData('Oreo', 437, 18.0),
+  createData('Cupcake', 305, 3.7),
+  createData('Donut', 452, 25.0),
+  createData('Eclair', 262, 16.0),
+  createData(
+    'Frdasdasdasdasfasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdaddasdsadasdasdadadddddddd',
+    159, 6.0,
+  ),
+  createData('Gingerbread', 356, 16.0),
+  createData('Honeycomb', 408, 3.2),
+  createData('Ice cream sandwich', 237, 9.0),
+  createData('Jelly Bean', 375, 0.0),
+  createData('KitKat', 518, 26.0),
+  createData('Lollipop', 392, 0.2),
+  createData('Marshmallow', 318, 0),
+  createData('Nougat', 360, 19.0),
+  createData('Oreo', 437, 18.0),
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 const useStyles2 = makeStyles({
   table: {
     minWidth: 500,
+  },
+});
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiTableCell: {
+      root: {
+        paddingLeft: '65px !important',
+        paddingRight: '0px !important',
+      },
+    },
   },
 });
 
@@ -103,6 +122,7 @@ export default function SuggestionsTable() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <TableContainer style={{ width: '1118px' }}>
       <Table className={classes.table} aria-label="custom pagination table">
         <TableBody>
@@ -111,14 +131,19 @@ export default function SuggestionsTable() {
             : rows
           ).map((row) => (
             <TableRow key={row.name}>
-              <TableCell width={{ width: 100 }} align='center' size='small'>
-                <Checkbox name='hello'/>
+              <TableCell style={{ width: 170, color: '#707683' }} align='left' size='small'>
                 {row.calories}
               </TableCell>
-              <TableCell style={{ width: 788 }} align="left" size='small'>
-                {row.name}
+              <TableCell
+              style={{ width: 550 }}
+              align="left"
+              size='small'
+              >
+                <button className='suggestionCtn'>
+                  {row.name}
+                </button>
               </TableCell>
-              <TableCell style={{ width: 160 }} align="center" size='small'>
+              <TableCell style={{ width: 137, color: '#707683' }} align="left" size='small'>
                 {row.fat}
               </TableCell>
             </TableRow>
@@ -138,11 +163,9 @@ export default function SuggestionsTable() {
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}
+              labelRowsPerPage='每页显示条数'
               SelectProps={{
-                inputProps: { 'aria-label': 'rows per page', style: { outline: 'none !important' } },
-                native: true,
-                border: '0px !important',
-                outline: '0px',
+                inputProps: { 'aria-label': 'rows per page' },
               }}
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -152,5 +175,9 @@ export default function SuggestionsTable() {
         </TableFooter>
       </Table>
     </TableContainer>
+    </ThemeProvider>
   );
 }
+// SuggestionsTable.propTypes = {
+//   CommentList: PropTypes.array.isRequired,
+// };

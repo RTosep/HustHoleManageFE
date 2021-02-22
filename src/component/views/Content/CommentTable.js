@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -60,38 +61,36 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
-}
-
-const rows = [
-  // createData('Cupcake', 305, 3.7),
-  // createData('Donut', 452, 25.0),
-  // createData('Eclair', 262, 16.0),
-  // createData('Frozen yoghurt', 159, 6.0),
-  // createData('Gingerbread', 356, 16.0),
-  // createData('Honeycomb', 408, 3.2),
-  // createData('Ice cream sandwich', 237, 9.0),
-  // createData('Jelly Bean', 375, 0.0),
-  // createData('KitKat', 518, 26.0),
-  // createData('Lollipop', 392, 0.2),
-  // createData('Marshmallow', 318, 0),
-  // createData('Nougat', 360, 19.0),
-  // createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
-
 const useStyles2 = makeStyles({
   table: {
     minWidth: 500,
   },
+  selectDropdown: { color: 'rgba(0, 0, 0, 0.87)', backgroundColor: 'white' },
+  menuItem: {
+    '&:hover': {
+      backgroundColor: 'rgba(75, 159, 121, 0.12)',
+    },
+    '&:active': {
+      backgroundColor: 'rgba(75, 159, 121)',
+    },
+  },
 });
 
-export default function CustomPaginationActionsTable() {
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#4B9F79',
+    },
+  },
+});
+
+export default function CustomPaginationActionsTable(props) {
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const { CommentList } = props;
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, CommentList.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -103,54 +102,63 @@ export default function CustomPaginationActionsTable() {
   };
 
   return (
-    <TableContainer style={{ width: '1118px' }}>
-      <Table className={classes.table} aria-label="custom pagination table">
-        <TableBody>
-          {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
-          ).map((row) => (
-            <TableRow key={row.name}>
-              <TableCell width={{ width: 100 }} align='center' size='small'>
-                <Checkbox name='hello'/>
-                {row.calories}
-              </TableCell>
-              <TableCell style={{ width: 788 }} align="left" size='small'>
-                {row.name}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="center" size='small'>
-                {row.fat}
-              </TableCell>
-            </TableRow>
-          ))}
+    <ThemeProvider theme={theme}>
+      <TableContainer style={{ width: '1118px' }}>
+        <Table className={classes.table} aria-label="custom pagination table">
+          <TableBody>
+            {(rowsPerPage > 0
+              ? CommentList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : CommentList
+            ).map((item, index) => (
+              <TableRow key={item + index}>
+                <TableCell width={{ width: 100 }} height={{ height: 64 }} align='center' size='small'>
+                  <Checkbox
+                  name='hello'
+                  color='secondary'
+                  disableRipple
+                  />
+                  {item.reply_local_id}
+                </TableCell>
+                <TableCell style={{ width: 788 }} height={{ height: 64 }} align="left" size='small'>
+                  {item.content}
+                </TableCell>
+                <TableCell height={{ height: 64 }} className={ item.is_deleted ? 'isDeletedText' : 'isNotDeletedText'} align="center" size='small'>
+                  {item.is_deleted ? '已删除' : '未删除'}
+                </TableCell>
+              </TableRow>
+            ))}
 
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                colSpan={3}
+                count={CommentList.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                labelRowsPerPage='每页显示条数'
+                SelectProps={{
+                  inputProps: { 'aria-label': 'rows per page' },
+                  MenuProps: { classes: { paper: classes.selectDropdown } },
+                }}
+                classes={{ menuItem: classes.menuItem }}
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage}
+                ActionsComponent={TablePaginationActions}
+              />
             </TableRow>
-          )}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { 'aria-label': 'rows per page', style: { outline: 'none !important' } },
-                native: true,
-                border: '0px !important',
-                outline: '0px',
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </TableContainer>
+          </TableFooter>
+        </Table>
+      </TableContainer>
+    </ThemeProvider>
   );
 }
+CustomPaginationActionsTable.propTypes = {
+  CommentList: PropTypes.array.isRequired,
+};

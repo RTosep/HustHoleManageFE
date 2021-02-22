@@ -11,8 +11,8 @@ import CustomPaginationActionsTable from './CommentTable';
 
 const Comment = () => {
   const classes = contentStyles();
-  const MaxSize = 10000;
-
+  const MaxSize = 100;
+  const [CommentList, setCommentList] = useState([]);
   return (
     <div className='comment'>
         <Formik
@@ -20,8 +20,16 @@ const Comment = () => {
             onSubmit={ (values) => {
               axios({
                 method: 'GET',
-                url: `http://hustholetest.pivotstudio.cn/managerapi/replies/?hole_id=${values.hole_id}&start_id=0&list_size=${MaxSize}`,
-              });
+                url: `http://hustholetest.pivotstudio.cn/managerapi/replies?hole_id=${values.hole_id}&start_id=0&list_size=${MaxSize}`,
+                headers: {
+                  Authorization: localStorage.getItem('token'),
+                },
+                withCredentials: true,
+              }).then(
+                (response) => {
+                  setCommentList(response.data.msg);
+                },
+              );
             }}
         >
         {({
@@ -47,12 +55,12 @@ const Comment = () => {
               <SearchIcon className={classes.searchIcon} />
               <input
               type='text'
-              name='id'
+              name='hole_id'
               className="inputDelete"
               placeholder="输入树洞ID"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.id}
+              value={values.hole_id}
               />
           </div>
           <Button
@@ -65,7 +73,7 @@ const Comment = () => {
           <div className='commentLine'>
           </div>
           <div className='commentList'>
-            <CustomPaginationActionsTable />
+            <CustomPaginationActionsTable CommentList={CommentList}/>
           </div>
         </form>
         )}
