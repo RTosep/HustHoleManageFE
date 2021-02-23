@@ -11,7 +11,7 @@ import CustomPaginationActionsTable from './CommentTable';
 
 const Comment = () => {
   const classes = contentStyles();
-  const MaxSize = 100;
+  const MaxSize = 1000;
   const [CommentList, setCommentList] = useState([]);
   return (
     <div className='comment'>

@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import {
   Button,
   FormControl,
-  InputLabel,
   MenuItem,
 } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
@@ -15,12 +14,25 @@ import './FeedBacks.css';
 
 const Suggestion = () => {
   const classes = FeedBacksStyles();
-  const [type, setType] = useState(0);
+  const MaxSize = 100000;
+  const [SuggestionList, setSuggestionList] = useState([]);
   return (
     <div className='suggestionFeedBack'>
         <Formik
-            initialValues={{ hole_id: '' }}
+            initialValues={{ type: '' }}
             onSubmit={ (values) => {
+              axios({
+                method: 'GET',
+                url: `http://hustholetest.pivotstudio.cn/managerapi/feedback?start_id=0&type=${values.type}&list_size=${MaxSize}`,
+                headers: {
+                  Authorization: localStorage.getItem('token'),
+                },
+                withCredentials: true,
+              }).then(
+                (response) => {
+                  setSuggestionList(response.data.msg);
+                },
+              );
             }}
         >
         {({
@@ -41,11 +53,15 @@ const Suggestion = () => {
           <Typography className='suggestStaText'>
               发送时间
           </Typography>
+          <Typography className='fbTypeText'>
+            反馈类型
+          </Typography>
           <FormControl className='suggestionSelect'>
             <Select
-            labelId='selectSuggestType'
+            name='type'
             onChange={handleChange}
-            value={values}
+            value={values.type}
+            disableUnderline
             >
               <MenuItem value={0}>建议</MenuItem>
               <MenuItem value={1}>故障</MenuItem>
@@ -62,7 +78,7 @@ const Suggestion = () => {
           <div className='commentLine'>
           </div>
           <div className='suggestionList'>
-            <SuggestionsTable />
+            <SuggestionsTable SuggestionList={SuggestionList}/>
           </div>
         </form>
         )}
