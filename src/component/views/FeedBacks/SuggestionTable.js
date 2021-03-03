@@ -130,11 +130,12 @@ export default function SuggestionsTable(props) {
               : SuggestionList
             ).map((item, index) => (
               <TableRow key={item + index}>
-                <TableCell style={{ width: 85, color: '#707683' }} align='left' size='small'>
+                <TableCell style={{ width: 85, color: '#707683' }} height={{ height: 64 }} align='left' size='small'>
                   {item.id}
                 </TableCell>
                 <TableCell
                 style={{ width: 550 }}
+                height={{ height: 64 }}
                 align="left"
                 size='small'
                 >
@@ -146,7 +147,7 @@ export default function SuggestionsTable(props) {
                     {item.content}
                   </button>
                 </TableCell>
-                <TableCell style={{ width: 137, color: '#707683' }} align="left" size='small'>
+                <TableCell style={{ width: 137, color: '#707683' }} height={{ height: 64 }} align="left" size='small'>
                   {`${item.time.slice(11, 16)} ${item.time.slice(0, 10)}`}
                 </TableCell>
               </TableRow>

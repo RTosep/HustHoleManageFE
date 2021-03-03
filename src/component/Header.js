@@ -44,7 +44,7 @@ const TopBar = () => {
         <Toolbar>
           <Typography className={classes.typographyText}>1037树洞</Typography>
         </Toolbar>
-        <img src='leaveLogo.png' className={classes.notification}/>
+        <img src='/leaveLogo.png' className={classes.notification}/>
         </AppBar>
     </div>
   );

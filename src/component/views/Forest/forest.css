@@ -1,0 +1,183 @@
+.forestBox{
+    position: absolute;
+    top: 100px;
+    left: 288px;
+    width: 1120px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.firstText{
+    margin-top: 24px !important;
+    margin-left: 24px !important;
+    font-size: 20px !important;
+    line-height: 30px !important;
+    letter-spacing: 0.15px !important;
+    color: rgba(0, 0, 0, 0.87);
+}
+.allText{
+    margin-top: 38px !important;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold !important;
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+}
+.fnText{
+    position: absolute;
+    left: 24px;
+}
+.fsText{
+    position: absolute;
+    left: 252px;
+}
+.ftText{
+    position: absolute;
+    left: 786px;
+}
+.fzText{
+    position: absolute;
+    left: 1025px;
+}
+.baseLine{
+    position: absolute;
+    top: 140px;
+    width: 1118px;
+    height: 1px;
+    background-color: #EBEFF2;
+}
+.fTable{
+    margin-top: 20px !important;
+}
+.rfsBtn{
+    position: absolute;
+    left: 1002px;
+    top: -64px;
+    width: 94px;
+    height: 36px;
+}
+.detailBox{
+    position: absolute;
+    left: 548px;
+    top: 412px;
+    width: 344px;
+    min-height: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-radius: 4px;
+    z-index: 9;
+}
+.passBtn{
+    border: none !important;
+    background-color: white !important;
+    position: absolute;
+    bottom: 30px;
+    left: 24px;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 16px;
+    letter-spacing: 1.25px !important;
+    color: #4B9F79;
+}
+.rejectBtn{
+    border: none !important;
+    background-color: white !important;
+    position: absolute;
+    bottom: 30px;
+    left: 114px;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 16px;
+    letter-spacing: 1.25px !important;
+    color: #4B9F79;
+}
+.boxTitle{
+    margin-top: 24px !important;
+    margin-left: 72px !important;
+    font-size: 20px !important;
+    letter-spacing: 0.15px !important;
+    color: rgba(0, 0, 0, 0.87);
+}
+.headImg{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    border: 1px solid black;
+}
+.typeText{
+    position: absolute;
+    left: 16px;
+    bottom: 108px;
+    font-size: 13px !important;
+    line-height: 19px;
+    letter-spacing: 0.01em !important;
+    color: #707683;
+}
+.selectForm{
+    position: absolute;
+    width: 100px;
+    left: 100px;
+    bottom: 100px !important;
+}
+.notShow{
+    display: none;
+}
+.firstCell{
+    font-size: 15px !important;
+    color: #323C47 !important;
+    letter-spacing: 0.01em !important;
+}
+.firstCellDiv{
+    width: 120px;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis; 
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+.secondCellBtn{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #707683 !important;
+    width: 270px;
+    text-align: start;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis; 
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+.thirdCell{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #707683 !important;
+}
+.text1{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #7E7E7E !important;
+}
+.text2{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #7E7E7E !important;
+}
+.text3{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #02A9F5 !important;
+}
+.text4{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.01em !important;
+    color: #FF6767 !important;
+}
