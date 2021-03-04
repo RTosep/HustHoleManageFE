@@ -5,7 +5,6 @@ import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Formik } from 'formik';
 import axios from 'axios';
-import qs from 'qs';
 import contentStyles from './contentStyles';
 import './content.css';
 
