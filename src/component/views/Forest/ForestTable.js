@@ -22,7 +22,7 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import { Formik } from 'formik';
 import { Typography } from '@material-ui/core';
 import './forest.css';
-import MyContext from '../../../contextManager';
+import { ForestContext } from '../../../contextManager';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -122,8 +122,8 @@ export default function ForestTable(props) {
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const { ForestList, show } = props;
-  const { setShow } = useContext(MyContext);
+  const { ForestList, show, detail } = props;
+  const { setShow, setDetail } = useContext(ForestContext);
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, ForestList.length - page * rowsPerPage);
 
@@ -165,7 +165,7 @@ export default function ForestTable(props) {
                   <button
                   type='button'
                   className='secondCellBtn'
-                  onClick={ () => { setShow(1); } }
+                  onClick={ () => { setShow(1); setDetail(item); } }
                   >
                     {item.description}
                   </button>

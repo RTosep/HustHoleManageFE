@@ -17,6 +17,13 @@ const DeleteBox = () => {
     <>
       <Formik
           initialValues={{ id: '' }}
+          validate={(values) => {
+            const errors = {};
+            if (!/[1-9][0-9]*/g.test(values.id)) {
+              errors.id = 'invalid holes id';
+            }
+            return errors;
+          }}
           onSubmit={ (values) => {
             setConfirm(0);
             axios({
@@ -65,20 +72,21 @@ const DeleteBox = () => {
                 />
             </div>
             <Button
-            className={classes.commentDelBtn}
+            className={classes.contentDelBtn}
             disableRipple
-            onClick={() => setConfirm(1)}
+            onClick={() => { setConfirm(1); }}
             >
             删除
             </Button>
           </div>
-          <div className={ confirm === 1 ? 'confirmBox' : 'notShow'}>
+          <div className={ confirm === 0 ? 'notShow' : 'confirmBox' }>
             <Typography className='confirmBoxText'>
             确认要删除该树洞吗?
             </Typography>
             <button
             type='submit'
             className='confirm'
+            onClick={ () => setConfirm(0)}
             onSubmit={handleSubmit}
             >
             确认

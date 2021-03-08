@@ -57,6 +57,17 @@
     position: absolute;
     left: 580px;
     top: 500px;
+    z-index: 999;
+}
+.confirmCmtBox{
+    width: 280px;
+    height: 112px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14), 0px 9px 46px rgba(0, 0, 0, 0.12), 0px 11px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: absolute;
+    left: 580px;
+    top: 500px;
 }
 .confirmBoxText{
     position: absolute;
@@ -67,7 +78,29 @@
     color: rgba(0, 0, 0, 0.6);
     line-height: 20px;
 }
+.confirmCmtBoxText{
+    position: absolute;
+    left: 24px;
+    top: 21px;
+    height: 20px;
+    letter-spacing: 0.25px;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 20px;
+}
 .confirm{
+    position: absolute;
+    height: 16px;
+    left: 140px;
+    top: 78px;
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background-color: white;
+    color: #4B9F79;
+}
+.confirmCmt{
     position: absolute;
     height: 16px;
     left: 140px;
@@ -93,12 +126,25 @@
     background-color: white;
     color: #4B9F79;
 }
+.cancleConfirmCmt{
+    position: absolute;
+    height: 16px;
+    left: 222px;
+    top: 78px;
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    background-color: white;
+    color: #4B9F79;
+}
 .DeletedShow{
     position: absolute;
     width: 108px;
     height: 32px;
     left: 666px;
-    top: 904px;
+    top: 650px;
     background: rgba(0, 0, 0, 0.12);
     border-radius: 24px;
 }
@@ -195,14 +241,14 @@
     font-size: 13px !important;
     line-height: 19px;
     letter-spacing: 0.01em;
-    color: #FF6767;
+    color: #FF6767 !important;
 }
 .isNotDeletedText{
     width: 160px;
     font-size: 13px !important;
     line-height: 19px;
     letter-spacing: 0.01em;
-    color: #7E7E7E;
+    color: #7E7E7E !important;
 }
 tr{
     height: 64px;

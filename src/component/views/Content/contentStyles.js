@@ -25,6 +25,14 @@ const contentStyles = makeStyles(() => ({
     marginTop: '-64px',
     color: '#4B9F79',
   },
+  contentDelBtn: {
+    width: '94px',
+    height: '36px',
+    left: '680px',
+    top: '173px',
+    color: '#4B9F79',
+    position: 'absolute',
+  },
   commentDelBtn: {
     width: '94px',
     height: '36px',

@@ -105,7 +105,6 @@
     position: absolute;
     left: 16px;
     top: 16px;
-    border: 1px solid black;
 }
 .typeText{
     position: absolute;
@@ -180,4 +179,29 @@
     line-height: 19px !important;
     letter-spacing: 0.01em !important;
     color: #FF6767 !important;
+}
+.coverImg{
+    width: 40px;
+    height: 40px;
+}
+.backgroundImg{
+    width: 341px;
+}
+.gapDiv{
+    margin-top: 15px !important;
+    width: 344px;
+}
+.gapDivText{
+    margin-top: 16px !important;
+    margin-left: 16px !important;
+    margin-right: 15px !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    letter-spacing: 0.25px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+.bottomDiv{
+    margin-top: 30px !important;
+    width: 344px;
+    height: 107px;
 }

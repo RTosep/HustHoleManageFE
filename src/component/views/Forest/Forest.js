@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Button, MenuItem, Select } from '@material-ui/core';
 import { Formik } from 'formik';
+import qs from 'qs';
 import axios from 'axios';
 import Page from '../../Page';
 import ForestTable from './ForestTable';
-import MyContext from '../../../contextManager';
+import { ForestContext } from '../../../contextManager';
 import './forest.css';
 
 const ForestPage = () => {
-  const MAXSIZE = 10;
+  const MAXSIZE = 10000;
+  const [detail, setDetail] = useState({});
   const [show, setShow] = React.useState(0);
+  const [approval, setApproval] = useState(false);
+  const [forestId, setForestId] = useState('');
   const [ForestList, setForestList] = useState([]);
   return (
-    <MyContext.Provider value={{ setShow }}>
+    <ForestContext.Provider value={{ setShow, setDetail }}>
     <Page
       title="Forest"
     >
@@ -30,6 +34,7 @@ const ForestPage = () => {
           }).then(
             (response) => {
               setForestList(response.data.forests);
+              console.log(response.data.forests);
             },
           );
         }}
@@ -65,78 +70,111 @@ const ForestPage = () => {
             </Button>
             <div className='baseLine'></div>
             <div className='fTable'>
-              <ForestTable ForestList={ForestList} show={show}/>
+              <ForestTable ForestList={ForestList} show={show} detail={detail}/>
             </div>
           </div>
         </form>
         )}
       </Formik>
       <Formik
-        initialValues={{ type: '' }}
-        onSubmit={ (values) => {
-          console.log('hello');
-          // axios({
-          //   method: 'GET',
-          //   url: `http://hustholetest.pivotstudio.cn/managerapi/feedback?start_id=0&type=${values.type}&list_size=${MaxSize}`,
-          //   headers: {
-          //     Authorization: localStorage.getItem('token'),
-          //   },
-          //   withCredentials: true,
-          // }).then(
-          //   (response) => {
-          //     setSuggestionList(response.data.msg);
-          //   },
-          // );
+        initialValues={{ type: 4 }}
+        onSubmit={ (values, { setSubmitting }) => {
+          axios({
+            method: 'POST',
+            url: `http://hustholetest.pivotstudio.cn/managerapi/forests/applied/${forestId}`,
+            headers: {
+              Authorization: localStorage.getItem('token'),
+            },
+            data: qs.stringify({
+              is_approved: approval,
+              type: values.type,
+            }),
+            withCredentials: true,
+          }).then(
+            (response) => {
+              setSubmitting(false);
+            },
+          ).catch(
+            (reason) => {
+              setSubmitting(false);
+              console.log(reason);
+            },
+          );
         }}
       >
         {({
           values,
           handleChange,
           handleSubmit,
+          isSubmitting,
         }) => (
         <form onSubmit={handleSubmit}>
           <div className={ show === 0 ? 'notShow' : 'detailBox' }>
-            <div className='headImg'></div>
+            <div className='headImg'>
+              <img className='coverImg' src={detail.cover_url} />
+            </div>
             <Typography className='boxTitle'>
-              小树林名称
+              {detail.name}
             </Typography>
             <div className='gapDiv'>
+              <img className='backgroundImg' src={detail.background_image_url} />
+              <Typography className='gapDivText'>
+                {detail.description}
+              </Typography>
             </div>
-            <Typography className='typeText'>类型</Typography>
-            <div className='selectForm'>
-              <Select
-              name='type'
-              onChange={handleChange}
-              value={values.type}
-              disableUnderline
-              >
-                <MenuItem value={0}>情感</MenuItem>
-                <MenuItem value={1}>校园</MenuItem>
-                <MenuItem value={2}>学习</MenuItem>
-                <MenuItem value={3}>娱乐</MenuItem>
-                <MenuItem value={4}>限定</MenuItem>
-              </Select>
+            <div className='bottomDiv'>
+              <Typography className='typeText'>类型</Typography>
+              <div className='selectForm'>
+                <Select
+                name='type'
+                onChange={handleChange}
+                value={values.type}
+                disableUnderline
+                >
+                  <MenuItem value={0}>情感</MenuItem>
+                  <MenuItem value={1}>校园</MenuItem>
+                  <MenuItem value={2}>学习</MenuItem>
+                  <MenuItem value={3}>娱乐</MenuItem>
+                  <MenuItem value={4}>限定</MenuItem>
+                </Select>
+              </div>
+              <div>
+                <button
+                className='passBtn'
+                type='submit'
+                disabled={isSubmitting}
+                onClick={() => {
+                  setShow(0);
+                  setApproval(true);
+                  setForestId(detail.forest_id);
+                  handleSubmit();
+                }}
+                >
+                  通过
+                </button>
+              </div>
+              <div>
+                <button
+                type='submit'
+                className='rejectBtn'
+                disabled={isSubmitting}
+                onClick={() => {
+                  setShow(0);
+                  setApproval(false);
+                  setForestId(detail.id);
+                  handleSubmit();
+                }}
+                >
+                  拒绝
+                </button>
+              </div>
             </div>
-            <button
-            className='passBtn'
-            type='submit'
-            onClick={() => { setShow(0); handleSubmit(); }}
-            >
-              通过
-            </button>
-            <button
-            type='submit'
-            className='rejectBtn'
-            onClick={() => { setShow(0); handleSubmit(); }}
-            >
-              拒绝
-            </button>
           </div>
         </form>
         )}
       </Formik>
     </Page>
-    </MyContext.Provider>
+    </ForestContext.Provider>
   );
 };
 export default ForestPage;

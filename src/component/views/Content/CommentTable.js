@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -12,7 +12,9 @@ import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { CommentContext } from '../../../contextManager';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -89,11 +91,24 @@ export default function CustomPaginationActionsTable(props) {
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const { CommentList } = props;
+  const { CommentList, checkList } = props;
+  const [check, setCheck] = React.useState(0);
+  const { setCheckList } = useContext(CommentContext);
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, CommentList.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const handleIdChange = () => {
+    const obj = document.getElementsByName('checkId');
+    let checkedList = [];
+    for (let i = 0; i < CommentList.length; i += 1) {
+      if (obj[i] && obj[i].checked) {
+        checkedList.push(parseInt(obj[i].value, 10));
+      }
+    }
+    setCheckList(checkedList);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -110,14 +125,21 @@ export default function CustomPaginationActionsTable(props) {
               ? CommentList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : CommentList
             ).map((item, index) => (
-              <TableRow key={item + index}>
+              <TableRow key={item.reply_local_id}>
                 <TableCell width={{ width: 100 }} height={{ height: 64 }} align='center' size='small'>
-                  <Checkbox
-                  name='hello'
-                  color='secondary'
-                  disableRipple
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        // checked={state.checkedB}
+                        onChange={handleIdChange}
+                        name='checkId'
+                        color="secondary"
+                        value={item.id}
+                        disableRipple
+                      />
+                    }
+                    label={item.id}
                   />
-                  {item.reply_local_id}
                 </TableCell>
                 <TableCell style={{ width: 788 }} height={{ height: 64 }} align="left" size='small'>
                   {item.content}

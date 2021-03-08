@@ -1,4 +1,4 @@
 import React from 'react';
 
-const MyContext = React.createContext(null);
-export default MyContext;
+export const CommentContext = React.createContext(null);
+export const ForestContext = React.createContext(null);

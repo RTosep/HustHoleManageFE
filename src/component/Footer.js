@@ -29,7 +29,7 @@ const FooterBar = () => {
          className={classes.appBar}
         >
         <Toolbar>
-            <img src='pivotLogo.png' className={classes.logo} />
+            <img src='/pivotLogo.png' className={classes.logo} />
         </Toolbar>
         </AppBar>
     </div>

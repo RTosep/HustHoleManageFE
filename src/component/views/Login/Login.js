@@ -15,7 +15,7 @@ const LoginPage = () => {
   return (
     <div className='loginPage'>
       <Header />
-      <img className='pivotLogo' src='PivotStudioLogo.png'/>
+      <img className='pivotLogo' src='/PivotStudioLogo.png'/>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={(values) => {
@@ -28,7 +28,7 @@ const LoginPage = () => {
               navigate('/app/home', { replace: true });
             },
           ).catch(
-            (error) => setState(1),
+            (reason) => setState(1),
           );
         }}
       >
@@ -45,7 +45,7 @@ const LoginPage = () => {
               登录
             </Typography>
             <div className='loginUserName'>
-              <img className='userLogo' src='user.jpg'/>
+              <img className='userLogo' src='/user.jpg'/>
               <TextField
                 className="loginUserInput"
                 label="账号"
@@ -58,7 +58,7 @@ const LoginPage = () => {
               />
             </div>
             <div className='loginPassword'>
-              <img className='pwdLogo' src='lock.jpg'/>
+              <img className='pwdLogo' src='/lock.jpg'/>
               <TextField
                 className="loginPwdInput"
                 label="密码"

@@ -5,19 +5,27 @@ import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Formik } from 'formik';
 import axios from 'axios';
+import qs from 'qs';
 import contentStyles from './contentStyles';
 import './content.css';
+import { CommentContext } from '../../../contextManager';
 import CustomPaginationActionsTable from './CommentTable';
 
 const Comment = () => {
   const classes = contentStyles();
   const MaxSize = 1000;
+  const [deleteShow, setDeleteShow] = useState(0);
+  const [alreadyDel, setAlreadyDel] = useState(0);
   const [CommentList, setCommentList] = useState([]);
+  const [checkList, setCheckList] = useState([]);
+  const [holeId, setHoldId] = useState(-1);
   return (
+    <CommentContext.Provider value={{ setCheckList }}>
     <div className='comment'>
         <Formik
             initialValues={{ hole_id: '' }}
             onSubmit={ (values) => {
+              setHoldId(values.hole_id);
               axios({
                 method: 'GET',
                 url: `http://hustholetest.pivotstudio.cn/managerapi/replies?hole_id=${values.hole_id}&start_id=0&list_size=${MaxSize}`,
@@ -73,7 +81,7 @@ const Comment = () => {
           <div className='commentLine'>
           </div>
           <div className='commentList'>
-            <CustomPaginationActionsTable CommentList={CommentList}/>
+            <CustomPaginationActionsTable CommentList={CommentList} checkList={checkList}/>
           </div>
         </form>
         )}
@@ -81,6 +89,26 @@ const Comment = () => {
         <Formik
             initialValues={{ hole_id: '' }}
             onSubmit={ (values) => {
+              axios({
+                method: 'delete',
+                url: 'http://hustholetest.pivotstudio.cn/managerapi/replies',
+                headers: {
+                  Authorization: localStorage.getItem('token'),
+                  'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                },
+                data: {
+                  reply_ids: checkList.toString(),
+                },
+                withCredentials: true,
+              }).then(
+                (response) => {
+                  setAlreadyDel(1);
+                  setDeleteShow(0);
+                  setTimeout(() => {
+                    setAlreadyDel(0);
+                  }, 3000);
+                },
+              );
             }}
         >
         {({
@@ -92,30 +120,30 @@ const Comment = () => {
             <Button
             className={classes.commentDelBtn}
             disableRipple
-            // onClick={() => setConfirm(1)}
+            onClick={() => setDeleteShow(1)}
             >
             删除
             </Button>
-          <div className='notShow'>
-            <Typography className='confirmBoxText'>
+          <div className={deleteShow === 0 ? 'notShow' : 'confirmCmtBox'}>
+            <Typography className='confirmCmtBoxText'>
             确认要删除该评论吗?
             </Typography>
             <button
             type='submit'
-            className='confirm'
+            className='confirmCmt'
             onSubmit={handleSubmit}
             >
             确认
             </button>
             <button
             type='button'
-            className='cancleConfirm'
-            // onClick={ () => setConfirm(0)}
+            className='cancleConfirmCmt'
+            onClick={ () => { setDeleteShow(0); }}
             >
             取消
             </button>
           </div>
-          <div className='notShow'>
+          <div className={ alreadyDel === 0 ? 'notShow' : 'DeletedShow' }>
             <Typography className='deletedText'>
                 该评论已删除
             </Typography>
@@ -145,6 +173,7 @@ const Comment = () => {
         )}
         </Formik>
     </div>
+    </CommentContext.Provider>
   );
 };
 

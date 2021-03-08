@@ -18,7 +18,7 @@ const RecoverBox = () => {
           onSubmit={ (values) => {
             axios({
               url: urlRecover + values.hole_id,
-              method: 'POST',
+              method: 'post',
               headers: {
                 Authorization: localStorage.getItem('token'),
               },
